@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Container, Card, CardContent, CardMedia, Grid } from "@mui/material";
 import  { getDataFromPokemon } from '../peticiones/index';
+import '../style-sheets/Home.css';
+import PokemonDetail from '../componentes/pokemonDetail'
 
 const Home = () => {
     const imgUrl =
@@ -28,9 +30,10 @@ const Home = () => {
                 pokemons.map((pokemon, index) => (
                     <Grid item md={4} lg={4} sm={12} xs={12}>
                         <Card sx={{ width: 300 }}>
-                            <CardMedia component='img' image={`${imgUrl}${index + 1}.svg`} />
+                            <CardMedia className="img-pokemon" component='img' image={`${imgUrl}${index + 1}.svg`} />
                             <CardContent>
                                 <h4>{pokemon.name}</h4>
+                                <PokemonDetail nombre={pokemon.name}/>
                             </CardContent>
                         </Card>
                     </Grid>
